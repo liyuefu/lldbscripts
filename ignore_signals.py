@@ -11,7 +11,9 @@ class ProcessEventListener(threading.Thread):
     
     def _suppress_signals(self, process):
         signals = process.GetUnixSignals()
-        signals.SetShouldStop(11, False)
+        signals.SetShouldStop(11, False) #SIGUSR1
+        signals.SetShouldStop(12, False) #SIGUSR2 . opengauss use SIGUSR2. 
+        
 
     def run(self):
         while True:
